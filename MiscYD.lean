@@ -7,11 +7,7 @@ import MiscYD.AddCombi.Kneser.MulStab
 import MiscYD.AddCombi.SliceRank
 import MiscYD.Book.MetricBetween
 import MiscYD.Book.SylvesterChvatal
-import MiscYD.Convexity.Ceva
 import MiscYD.Convexity.MinkowskiCaratheodory
-import MiscYD.Convexity.Refactor.Defs
-import MiscYD.Convexity.Refactor.StdSimplex
-import MiscYD.Convexity.Sperner.Sperner
 import MiscYD.Mathlib.Analysis.Convex.Combination
 import MiscYD.Mathlib.Combinatorics.SetFamily.Shatter
 import MiscYD.Mathlib.GroupTheory.OrderOfElement
@@ -27,6 +23,7 @@ import MiscYD.PhD.VCDim.CoveringPacking
 import MiscYD.PhD.VCDim.HausslerPacking
 import MiscYD.PhD.VCDim.HypercubeEdges
 import MiscYD.PhD.VCDim.Net
+import MiscYD.PhD.VCDim.SmallAvDegImpExistsSmallOutDeg
 import MiscYD.PhD.VCDim.SmallVCImpSmallCondVar
 import MiscYD.PhD.VCDim.UnifAP.Defs
 import MiscYD.PhD.VCDim.UnifAP.Fourier
