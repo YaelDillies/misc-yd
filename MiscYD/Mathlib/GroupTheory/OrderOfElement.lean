@@ -1,4 +1,8 @@
-import Mathlib.GroupTheory.OrderOfElement
+module
+
+public import Mathlib.GroupTheory.OrderOfElement
+
+public section
 
 namespace CharP
 variable {R : Type*} [AddGroupWithOne R] (p : ℕ) [CharP R p] {a b n : ℕ}

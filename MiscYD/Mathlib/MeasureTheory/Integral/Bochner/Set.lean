@@ -1,5 +1,9 @@
-import Mathlib.MeasureTheory.Integral.Bochner.Set
-import Mathlib.Probability.Notation
+module
+
+public import Mathlib.MeasureTheory.Integral.Bochner.Set
+public import Mathlib.Probability.Notation
+
+public section
 
 open scoped ENNReal ProbabilityTheory
 

@@ -3,12 +3,14 @@ Copyright (c) 2025 Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Yaël Dillies
 -/
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import Mathlib.Algebra.Order.BigOperators.Group.Finset
-import Mathlib.Data.Set.Card
-import Mathlib.Data.Set.Finite.Lattice
-import Mathlib.Order.Partition.Finpartition
-import MiscYD.Mathlib.Combinatorics.SetFamily.Shatter
+module
+
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.Algebra.Order.BigOperators.Group.Finset
+public import Mathlib.Data.Set.Card
+public import Mathlib.Data.Set.Finite.Lattice
+public import Mathlib.Order.Partition.Finpartition
+public import MiscYD.Mathlib.Combinatorics.SetFamily.Shatter
 
 /-!
 # A small VC dimension family has few edges in the L¹ metric
@@ -22,6 +24,8 @@ of pairs `(A, B)` with `#(A ∆ B) = 1` linear in their size.
   Vapnik-Chervonenkis Dimension*, David Haussler
 * Write-up by Thomas Bloom: http://www.thomasbloom.org/notes/vc.html
 -/
+
+public section
 
 open Finset
 open scoped symmDiff

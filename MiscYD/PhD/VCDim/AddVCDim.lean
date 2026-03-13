@@ -1,5 +1,9 @@
-import Mathlib.Algebra.Group.Action.Pointwise.Finset
-import Mathlib.Combinatorics.SetFamily.Shatter
+module
+
+public import Mathlib.Algebra.Group.Action.Pointwise.Finset
+public import Mathlib.Combinatorics.SetFamily.Shatter
+
+public section
 
 open scoped Pointwise
 

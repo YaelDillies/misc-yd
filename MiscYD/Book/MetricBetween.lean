@@ -1,11 +1,15 @@
-import Mathlib.Order.Circular
-import Mathlib.Topology.MetricSpace.Defs
+module
+
+public import Mathlib.Order.Circular
+public import Mathlib.Topology.MetricSpace.Defs
 
 /-!
 ### TODO
 
 Axiomatic betweenness
 -/
+
+@[expose] public section
 
 variable {V : Type*} [MetricSpace V] {u v w : V}
 

@@ -3,10 +3,12 @@ Copyright (c) 2023 Mantas Bakšys, Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Mantas Bakšys, Yaël Dillies
 -/
-import Mathlib.Algebra.Ring.Divisibility.Basic
-import Mathlib.Tactic.Abel
-import Mathlib.Tactic.Linarith
-import MiscYD.AddCombi.Kneser.MulStab
+module
+
+public import Mathlib.Algebra.Ring.Divisibility.Basic
+public import Mathlib.Tactic.Abel
+public import Mathlib.Tactic.Linarith
+public import MiscYD.AddCombi.Kneser.MulStab
 
 /-!
 # Kneser's addition theorem
@@ -25,6 +27,8 @@ if the inequality is strict, then we in fact have `|s + H| + |t + H| ≤ |s + t|
 * [Imre Ruzsa, *Sumsets and structure*][ruzsa2009]
 * Matt DeVos, *A short proof of Kneser's addition theorem*
 -/
+
+public section
 
 open Function MulAction
 open scoped Pointwise

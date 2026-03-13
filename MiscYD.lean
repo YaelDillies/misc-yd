@@ -22,7 +22,6 @@ import MiscYD.PhD.VCDim.Convex
 import MiscYD.PhD.VCDim.CoveringPacking
 import MiscYD.PhD.VCDim.HausslerPacking
 import MiscYD.PhD.VCDim.HypercubeEdges
-import MiscYD.PhD.VCDim.Net
 import MiscYD.PhD.VCDim.SmallAvDegImpExistsSmallOutDeg
 import MiscYD.PhD.VCDim.SmallVCImpSmallCondVar
 import MiscYD.PhD.VCDim.UnifAP.Defs

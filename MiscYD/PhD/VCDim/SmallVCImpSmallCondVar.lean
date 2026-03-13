@@ -3,11 +3,13 @@ Copyright (c) 2025 Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Yaël Dillies
 -/
-import Mathlib.Analysis.Complex.Exponential
-import Mathlib.Analysis.Normed.Lp.WithLp
-import Mathlib.Probability.CondVar
-import Mathlib.Topology.MetricSpace.MetricSeparated
-import MiscYD.PhD.VCDim.HypercubeEdges
+module
+
+public import Mathlib.Analysis.Complex.Exponential
+public import Mathlib.Analysis.Normed.Lp.WithLp
+public import Mathlib.Probability.CondVar
+public import Mathlib.Topology.MetricSpace.MetricSeparated
+public import MiscYD.PhD.VCDim.HypercubeEdges
 
 /-!
 # Small VC dimension implies small variance
@@ -21,6 +23,8 @@ has small conditional variance conditioned on finitely many other marginals.
   Vapnik-Chervonenkis Dimension*, David Haussler
 * Write-up by Thomas Bloom: http://www.thomasbloom.org/notes/vc.html
 -/
+
+public section
 
 open Fintype MeasureTheory Metric ProbabilityTheory Real
 open scoped Finset NNReal

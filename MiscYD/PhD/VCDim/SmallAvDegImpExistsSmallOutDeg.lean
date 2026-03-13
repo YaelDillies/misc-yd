@@ -1,5 +1,9 @@
-import Mathlib.Combinatorics.SimpleGraph.Coloring
-import Mathlib.Data.Set.Card
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Coloring
+public import Mathlib.Data.Set.Card
+
+public section
 
 open scoped Finset
 

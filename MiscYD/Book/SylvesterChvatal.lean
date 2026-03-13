@@ -1,6 +1,10 @@
-import Mathlib.Combinatorics.SimpleGraph.Basic
-import Mathlib.Data.Set.Finite.List
-import MiscYD.Book.MetricBetween
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Basic
+public import Mathlib.Data.Set.Finite.List
+public import MiscYD.Book.MetricBetween
+
+@[expose] public section
 
 variable {V : Type*} [MetricSpace V]
 

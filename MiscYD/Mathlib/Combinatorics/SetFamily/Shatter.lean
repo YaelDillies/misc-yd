@@ -1,4 +1,8 @@
-import Mathlib.Combinatorics.SetFamily.Shatter
+module
+
+public import Mathlib.Combinatorics.SetFamily.Shatter
+
+public section
 
 variable {α : Type*}
 

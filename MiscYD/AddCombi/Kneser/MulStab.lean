@@ -3,10 +3,12 @@ Copyright (c) 2023 Mantas Bakšys, Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Mantas Bakšys, Yaël Dillies
 -/
-import Mathlib.Algebra.Pointwise.Stabilizer
-import Mathlib.GroupTheory.Coset.Card
-import Mathlib.GroupTheory.GroupAction.Blocks
-import Mathlib.GroupTheory.GroupAction.Quotient
+module
+
+public import Mathlib.Algebra.Pointwise.Stabilizer
+public import Mathlib.GroupTheory.Coset.Card
+public import Mathlib.GroupTheory.GroupAction.Blocks
+public import Mathlib.GroupTheory.GroupAction.Quotient
 
 /-!
 # Stabilizer of a finset
@@ -17,6 +19,8 @@ This file defines the stabilizer of a finset of a group as a finset.
 
 * `Finset.mulStab`: The stabilizer of a **nonempty** finset as a finset.
 -/
+
+public section
 
 open Function MulAction
 open scoped Pointwise

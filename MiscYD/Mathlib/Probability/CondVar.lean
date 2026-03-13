@@ -1,4 +1,8 @@
-import Mathlib.Probability.CondVar
+module
+
+public import Mathlib.Probability.CondVar
+
+public section
 
 open MeasureTheory
 

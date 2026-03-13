@@ -3,8 +3,10 @@ Copyright (c) 2025 Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Yaël Dillies
 -/
-import Mathlib.Analysis.Convex.Basic
-import Mathlib.Data.Real.Basic
+module
+
+public import Mathlib.Analysis.Convex.Basic
+public import Mathlib.Data.Real.Basic
 
 /-!
 # VCₙ dimension of convex sets in ℝⁿ⁺¹, ℝⁿ⁺²
@@ -17,6 +19,8 @@ This file proves that every convex set in ℝⁿ has finite VCₙ dimension, con
 ℝⁿ⁺² with infinite VCₙ dimension (even more strongly, which n-shatters an infinite set),
 and conjectures that every convex set in ℝⁿ⁺¹ has finite VCₙ dimension.
 -/
+
+public section
 
 /-! ### What's known -/
 

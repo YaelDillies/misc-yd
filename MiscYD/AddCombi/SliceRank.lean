@@ -1,8 +1,12 @@
-import Mathlib.Algebra.BigOperators.Fin
-import Mathlib.Algebra.BigOperators.Pi
-import Mathlib.Algebra.Order.Ring.Nat
-import Mathlib.Algebra.Ring.Pi
-import Mathlib.Data.Fintype.Pi
+module
+
+public import Mathlib.Algebra.BigOperators.Fin
+public import Mathlib.Algebra.BigOperators.Pi
+public import Mathlib.Algebra.Order.Ring.Nat
+public import Mathlib.Algebra.Ring.Pi
+public import Mathlib.Data.Fintype.Pi
+
+public section
 
 open scoped BigOperators
 

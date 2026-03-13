@@ -1,4 +1,8 @@
-import Mathlib.Analysis.Convex.Combination
+module
+
+public import Mathlib.Analysis.Convex.Combination
+
+public section
 
 open AffineMap Finset
 

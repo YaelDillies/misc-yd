@@ -4,12 +4,12 @@
 This script parse the aggregate json file and filters all PRs which touch some given files.
 """
 
-import json
-import os
-from typing import List
-import subprocess
-import json
-import pathlib
+public import json
+public import os
+from typing public import List
+public import subprocess
+public import json
+public import pathlib
 
 def main():
     pr_file = subprocess.run(["curl", "https://raw.githubusercontent.com/leanprover-community/queueboard/refs/heads/master/processed_data/open_pr_data.json"],
@@ -40,7 +40,7 @@ def main():
         project_files[entry] = {
             "prs" : [] if file not in file_touched_pr else file_touched_pr[file],
             "num_sorries" : code.count("sorry"),
-            "depends" : "import MiscYD" in code
+            "depends" : "public import MiscYD" in code
         }
 
     folder_path = "./website/_includes"

@@ -23,14 +23,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Don't 'import Mathlib', use precise imports
+      - name: Don't 'public import Mathlib', use precise imports
         if: always()
         run: |
-          ! (find MiscYD -name "*.lean" -type f -print0 | xargs -0 grep -E -n '^import Mathlib$')
+          ! (find MiscYD -name "*.lean" -type f -print0 | xargs -0 grep -E -n '^public import Mathlib$')
 
-      - name: Files in MiscYD.Mathlib can't import MiscYD files outside MiscYD.Mathlib
+      - name: Files in MiscYD.Mathlib can't public import MiscYD files outside MiscYD.Mathlib
         run: |
-          ! (find MiscYD/Mathlib -name "*.lean" -type f -print0 | xargs -0 grep -E -n '^import MiscYD.(?!Mathlib)')
+          ! (find MiscYD/Mathlib -name "*.lean" -type f -print0 | xargs -0 grep -E -n '^public import MiscYD.(?!Mathlib)')
 
   build:
     name: Build project

@@ -1,6 +1,10 @@
-import Mathlib.Algebra.BigOperators.Group.Finset.Defs
-import Mathlib.Data.Fin.VecNotation
-import Mathlib.Data.Fintype.Basic
+module
+
+public import Mathlib.Algebra.BigOperators.Group.Finset.Defs
+public import Mathlib.Data.Fin.VecNotation
+public import Mathlib.Data.Fintype.Basic
+
+public section
 
 open scoped BigOperators
 

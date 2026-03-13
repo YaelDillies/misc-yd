@@ -3,8 +3,10 @@ Copyright (c) 2023 Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Yaël Dillies
 -/
-import Mathlib.GroupTheory.SpecificGroups.Cyclic
-import MiscYD.AddCombi.Kneser.Kneser
+module
+
+public import Mathlib.GroupTheory.SpecificGroups.Cyclic
+public import MiscYD.AddCombi.Kneser.Kneser
 
 /-!
 # The Cauchy-Davenport theorem as a corollary of Kneser's lemma
@@ -19,6 +21,8 @@ This file proves the Cauchy-Davenport theorem as a corollary of Kneser's lemma.
 
 additive combinatorics, number theory, sumset, cauchy-davenport
 -/
+
+public section
 
 open AddAction Finset
 open scoped Pointwise

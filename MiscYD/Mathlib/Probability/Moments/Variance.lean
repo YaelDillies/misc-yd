@@ -1,11 +1,15 @@
-import Mathlib.Probability.Moments.Variance
-import MiscYD.Mathlib.MeasureTheory.Integral.Bochner.Set
+module
+
+public import Mathlib.Probability.Moments.Variance
+public import MiscYD.Mathlib.MeasureTheory.Integral.Bochner.Set
 
 /-!
 # TODO
 
 Add a space before the `;` in `eVar[X; μ]`.
 -/
+
+public section
 
 open MeasureTheory
 

@@ -3,7 +3,10 @@ Copyright (c) 2025 Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Yaël Dillies
 -/
-import Mathlib.Analysis.Complex.Basic
+module
+
+public import Mathlib.Analysis.Complex.Basic
+
 import Mathlib.Tactic.Positivity.Basic
 import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.Ring
@@ -11,6 +14,8 @@ import Mathlib.Tactic.Ring
 /-!
 # Uniformly almost periodic functions
 -/
+
+public section
 
 variable {E F : Set ℝ} {C D ε δ t l : ℝ} {f g : ℝ → ℂ}
 

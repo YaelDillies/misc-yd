@@ -3,11 +3,13 @@ Copyright (c) 2023 Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Yaël Dillies
 -/
-import Mathlib.Algebra.Group.Pointwise.Finset.Basic
-import Mathlib.Combinatorics.SetFamily.Compression.Down
-import Mathlib.Data.Finset.Sups
-import Mathlib.Order.Interval.Set.OrdConnected
-import Mathlib.Order.UpperLower.Basic
+module
+
+public import Mathlib.Algebra.Group.Pointwise.Finset.Basic
+public import Mathlib.Combinatorics.SetFamily.Compression.Down
+public import Mathlib.Data.Finset.Sups
+public import Mathlib.Order.Interval.Set.OrdConnected
+public import Mathlib.Order.UpperLower.Basic
 
 /-!
 # Positive difference
@@ -29,6 +31,8 @@ We declare the following notation in the `finset_family` locale:
 
 * [Bollobás, Leader, Radcliffe, *Reverse Kleitman Inequalities][bollobasleaderradcliffe1989]
 -/
+
+public section
 
 open scoped Pointwise
 

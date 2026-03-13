@@ -1,4 +1,8 @@
-import Mathlib.LinearAlgebra.AffineSpace.Combination
+module
+
+public import Mathlib.LinearAlgebra.AffineSpace.Combination
+
+public section
 
 variable {ι k V P : Type*} [Ring k] [AddCommGroup V] [Module k V] [AddTorsor V P]
     {p₀ : P} {p : ι → P} {w : ι → k} {s : Finset ι} {t : Set P}

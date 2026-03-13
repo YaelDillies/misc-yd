@@ -3,9 +3,11 @@ Copyright (c) 2023 Mantas Bakšys, Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Mantas Bakšys, Yaël Dillies
 -/
-import Mathlib.Algebra.Ring.Divisibility.Basic
-import Mathlib.Combinatorics.Additive.ETransform
-import MiscYD.AddCombi.Kneser.MulStab
+module
+
+public import Mathlib.Algebra.Ring.Divisibility.Basic
+public import Mathlib.Combinatorics.Additive.ETransform
+public import MiscYD.AddCombi.Kneser.MulStab
 
 /-!
 # Kneser's addition lemma
@@ -24,6 +26,8 @@ if the inequality is strict, then we in fact have `|s + H| + |t + H| ≤ |s + t|
 * [Imre Ruzsa, *Sumsets and structure*][ruzsa2009]
 * Matt DeVos, *A short proof of Kneser's addition lemma*
 -/
+
+public section
 
 open Function MulAction Subgroup
 open scoped Pointwise

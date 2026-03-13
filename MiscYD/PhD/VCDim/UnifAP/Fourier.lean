@@ -3,12 +3,16 @@ Copyright (c) 2025 Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Yaël Dillies
 -/
-import Mathlib.MeasureTheory.Integral.IntervalAverage
-import MiscYD.PhD.VCDim.UnifAP.Defs
+module
+
+public import Mathlib.MeasureTheory.Integral.IntervalAverage
+public import MiscYD.PhD.VCDim.UnifAP.Defs
 
 /-!
 # Fourier analysis of uniformly almost periodic functions
 -/
+
+public section
 
 open Filter
 open scoped Topology
@@ -26,8 +30,8 @@ lemma IsUnifAlmostPeriodic.tendsto_mean (hf : IsUnifAlmostPeriodic f) :
 variable (Λ f) in
 /-- The **Fourier coefficient** at `Λ` of an uniformly almost periodic function `f` is the mean of
 `x ↦ f x * exp (-iΛx)`. -/
-noncomputable def fourierCoeff : ℂ := mean fun x ↦ f x * .exp (-.I * Λ * x)
+noncomputable def meanFourierCoeff : ℂ := mean fun x ↦ f x * .exp (-.I * Λ * x)
 
 /-- The **Fourier exponents** of an uniformly almost periodic function `f` are at most countable. -/
-lemma IsUnifAlmostPeriodic.countable_fourierCoeff_ne_zero : {Λ | fourierCoeff Λ f ≠ 0}.Countable :=
-  sorry
+lemma IsUnifAlmostPeriodic.countable_meanFourierCoeff_ne_zero :
+    {Λ | meanFourierCoeff Λ f ≠ 0}.Countable := sorry

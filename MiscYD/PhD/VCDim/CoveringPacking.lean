@@ -3,10 +3,12 @@ Copyright (c) 2025 Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Yaël Dillies
 -/
-import Mathlib.Combinatorics.Enumerative.DoubleCounting
-import Mathlib.Data.ENat.Lattice
-import Mathlib.Data.Set.Card
-import Mathlib.Topology.MetricSpace.Cover
+module
+
+public import Mathlib.Combinatorics.Enumerative.DoubleCounting
+public import Mathlib.Data.ENat.Lattice
+public import Mathlib.Data.Set.Card
+public import Mathlib.Topology.MetricSpace.Cover
 
 /-!
 # Covering and packing numbers
@@ -21,6 +23,8 @@ For a set `s` in a metric space and a real number `ε > 0`:
 
 High Dimensional Probability, Section 4.2.
 -/
+
+public section
 
 open scoped Finset NNReal
 

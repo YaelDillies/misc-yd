@@ -3,9 +3,11 @@ Copyright (c) 2025 Yaël Dillies. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Yaël Dillies
 -/
-import Mathlib.Analysis.Complex.Exponential
-import Mathlib.Analysis.Normed.Lp.WithLp
-import MiscYD.PhD.VCDim.SmallVCImpSmallCondVar
+module
+
+public import Mathlib.Analysis.Normed.Lp.PiLp
+public import Mathlib.Topology.MetricSpace.MetricSeparated
+public import MiscYD.Mathlib.Combinatorics.SetFamily.Shatter
 
 /-!
 # Haussler's packing lemma
@@ -21,6 +23,8 @@ absolute constant `C`.
 * Write-up by Thomas Bloom: http://www.thomasbloom.org/notes/vc.html
 -/
 
+public section
+
 open Fintype Metric Real
 open scoped Finset NNReal
 
@@ -30,7 +34,7 @@ variable {α : Type*} [Fintype α] {𝓕 : Finset (Set α)} {k d : ℕ}
 /-- The **Haussler packing lemma** -/
 theorem haussler_packing (isNIPWith_𝓕 : IsNIPWith d (𝓕 : Set (Set α)))
     (isSeparated_𝓕 : IsSeparated (k / card α)
-      ((fun A : Set α ↦ (WithLp.equiv 1 _).symm A.indicator (1 : α → ℝ)) '' 𝓕))
+      ((fun A : Set α ↦ WithLp.toLp 1 (A.indicator (1 : α → ℝ))) '' 𝓕))
     (hk : k ≤ card α) : #𝓕 ≤ exp 1 * (d + 1) * (2 * exp 1 * (card α + 1) / (k + 2 * d + 2)) :=
   sorry
 

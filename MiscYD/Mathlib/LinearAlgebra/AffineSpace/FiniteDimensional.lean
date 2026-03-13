@@ -1,4 +1,8 @@
-import Mathlib.LinearAlgebra.AffineSpace.FiniteDimensional
+module
+
+public import Mathlib.LinearAlgebra.AffineSpace.FiniteDimensional
+
+public section
 
 variable {k V P : Type*} [DivisionRing k] [AddCommGroup V] [Module k V] [AddTorsor V P]
 
