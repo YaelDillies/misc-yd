@@ -10,6 +10,6 @@ variable {V : Type*} [Finite V] {G : SimpleGraph V} {d : ℕ}
 oriented in such a way that all edges have outdegree at most `d`. -/
 lemma exists_orientation_of_average_degree_le (hGcolorable : G.Colorable 2)
     (hGdeg : ∀ s : Finset V, (G.induce s).edgeSet.ncard ≤ d * #s) :
-    ∃ r : V → V → Prop, Irreflexive r ∧ Std.Asymm r := sorry
+    ∃ r : V → V → Prop, Std.Irrefl r ∧ Std.Asymm r := sorry
 
 end SimpleGraph

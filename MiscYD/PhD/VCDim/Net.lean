@@ -44,7 +44,7 @@ lemma IsNet.mono (hN : N₁ ⊆ N₂) (h₁ : IsNet ε s N₁) : IsNet ε s N₂
 lemma IsNet.anti (hst : s ⊆ t) (ht : IsNet ε t N) : IsNet ε s N := fun _x hx ↦ ht <| hst hx
 
 lemma isNet_iff_subset_iUnion_emetricClosedBall :
-    IsNet ε s N ↔ s ⊆ ⋃ y ∈ N, EMetric.closedBall y ε := by simp [IsNet, subset_def]
+    IsNet ε s N ↔ s ⊆ ⋃ y ∈ N, Metric.closedEBall y ε := by simp [IsNet, subset_def]
 
 /-- A maximal `ε`-separated subset of a set `s` is an `ε`-net of `s`.
 

@@ -118,7 +118,7 @@ lemma mulStab_union (hs₁ : (s ∩ a • C.mulStab).Nonempty) (ht₁ : (t ∩ b
     rw [mul_mulStab] at hxyC
     exact hyne.not_disjoint (hC.mono_left <| le_iff_subset.2 hxyC)
   have hxysub : (x * y) • C.mulStab ⊆ s ∩ a • C.mulStab * (t ∩ b • C.mulStab) :=
-    hxyC.left_le_of_le_sup_left (hxyCsubC.trans <| subset_union_left.trans hx.subset')
+    hxyC.left_le_of_le_sup_left (hxyCsubC.trans <| subset_union_left.trans hx.subset)
   suffices s ∩ a • C.mulStab * (t ∩ b • C.mulStab) ⊂ (a * b) • C.mulStab by
     have := (card_le_card hxysub).not_gt ((card_lt_card this).trans_eq ?_)
     cases this

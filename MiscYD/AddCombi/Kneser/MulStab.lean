@@ -181,7 +181,7 @@ lemma mul_mulStab_mul_mul_mul_mulStab_mul :
 
 @[to_additive]
 lemma smul_finset_mulStab_subset (ha : a ∈ s) : a • s.mulStab ⊆ s :=
-  (smul_finset_subset_smul ha).trans s.mul_mulStab.subset'
+  (smul_finset_subset_smul ha).trans s.mul_mulStab.subset
 
 @[to_additive]
 lemma mul_subset_left_iff (hs : s.Nonempty) : s * t ⊆ s ↔ t ⊆ s.mulStab := by

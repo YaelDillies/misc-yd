@@ -6,7 +6,7 @@ Authors: Yaël Dillies
 import Mathlib.Combinatorics.Enumerative.DoubleCounting
 import Mathlib.Data.ENat.Lattice
 import Mathlib.Data.Set.Card
-import MiscYD.PhD.VCDim.Net
+import Mathlib.Topology.MetricSpace.Cover
 
 /-!
 # Covering and packing numbers
@@ -41,7 +41,7 @@ and at most `ecoveringNum ε s`.
 
 HDP 4.2.2 -/
 noncomputable def ecoveringNum (ε : ℝ≥0) (s : Set X) : ℕ∞ :=
-  ⨅ (N : Set X) (_ : N ⊆ s) (_ : IsNet ε s N), N.encard
+  ⨅ (N : Set X) (_ : N ⊆ s) (_ : IsCover ε s N), N.encard
 
 /-- The `ε`-covering number of a set `s` is the minimum size of an `ε`-net of `s` that is also a
 subset of `s`. It is equal to `0` if no such set exists.
@@ -54,11 +54,11 @@ HDP 4.2.2 -/
 noncomputable def coveringNum (ε : ℝ≥0) (s : Set X) : ℕ := (ecoveringNum ε s).toNat
 
 lemma le_ecoveringNum_iff_forall_le_encard {n : ℕ∞} :
-    n ≤ ecoveringNum ε s ↔ ∀ ⦃N : Set X⦄, N ⊆ s → IsNet ε s N → n ≤ N.encard := by
+    n ≤ ecoveringNum ε s ↔ ∀ ⦃N : Set X⦄, N ⊆ s → IsCover ε s N → n ≤ N.encard := by
   simp [ecoveringNum]
 
 lemma le_ecoveringNum_iff_forall_le_card {n : ℕ∞} :
-    n ≤ ecoveringNum ε s ↔ ∀ ⦃N : Finset X⦄, (N : Set X) ⊆ s → IsNet ε s N → n ≤ #N := by
+    n ≤ ecoveringNum ε s ↔ ∀ ⦃N : Finset X⦄, (N : Set X) ⊆ s → IsCover ε s N → n ≤ #N := by
   classical
   simp only [le_ecoveringNum_iff_forall_le_encard, Finset.forall, Set.Finite.coe_toFinset,
     ← Set.encard_coe_eq_coe_finsetCard]
@@ -70,7 +70,7 @@ lemma le_ecoveringNum_iff_forall_le_card {n : ℕ∞} :
     · exact h N hNfin hNs hN
     · simp [hNfin]
 
-lemma IsNet.ecoveringNum_le_encard (hNs : N ⊆ s) (hsN : IsNet ε s N) :
+lemma IsCover.ecoveringNum_le_encard (hNs : N ⊆ s) (hsN : IsCover ε s N) :
     ecoveringNum ε s ≤ N.encard := iInf₂_le_of_le N hNs <| iInf_le _ hsN
 
 end PseudoEMetricSpace
@@ -97,7 +97,7 @@ Note that HDP 4.2.3 incorrectly claims that this holds without the `ProperSpace 
 this can't be: If the conclusion holds true, then the closure of a closed ball (ie the closed
 ball itself) should be compact since it admits a finite net (its center). -/
 @[simp] lemma ecoveringNum_lt_top (hε : ε ≠ 0) : ecoveringNum ε s < ⊤ ↔ IsCompact (closure s) := by
-  simp [ecoveringNum, isCompact_closure_iff_exists_finite_isNet hε]; tauto
+  simp [ecoveringNum, isCompact_closure_iff_exists_finite_isCover hε]; tauto
 
 /-- A set in a proper metric space has finite covering number iff it is relatively compact.
 
@@ -106,7 +106,7 @@ Note that HDP 4.2.3 incorrectly claims that this holds without the `ProperSpace 
 this can't be: If the conclusion holds true, then the closure of a closed ball (ie the closed
 ball itself) should be compact since it admits a finite net (its center). -/
 lemma ecoveringNum_ne_top (hε : ε ≠ 0) : ecoveringNum ε s ≠ ⊤ ↔ IsCompact (closure s) := by
-  simp [ecoveringNum, isCompact_closure_iff_exists_finite_isNet hε]; tauto
+  simp [ecoveringNum, isCompact_closure_iff_exists_finite_isCover hε]; tauto
 
 /-- A set in a proper metric space has infinite covering number iff it is not relatively compact.
 
@@ -177,9 +177,10 @@ lemma ecoveringNum_le_epackingNum : ecoveringNum ε s ≤ epackingNum ε s := by
   · obtain ⟨N, hNs, hN, h⟩ := exists_isSeparated_encard_eq_packingNum hs
     simp only [← h, ne_eq, Set.encard_eq_top_iff, Set.not_infinite] at hs
     rw [← h]
-    exact (IsNet.of_maximal_isSeparated <| maximal_iff_forall_gt.2 ⟨⟨hNs, hN⟩, fun M hNM ⟨hMs, hM⟩ ↦
-      (hM.encard_le_epackingNum hMs).not_gt <| h ▸ hs.encard_lt_encard hNM⟩).ecoveringNum_le_encard
-      hNs
+    refine (IsCover.of_maximal_isSeparated <| maximal_iff_forall_gt.2
+      ⟨⟨hNs, hN⟩, ?_⟩).ecoveringNum_le_encard hNs
+    rintro M hNM ⟨hMs, hM⟩
+    exact (hM.encard_le_epackingNum hMs).not_gt <| h ▸ hs.encard_lt_encard hNM
 
 /-- HDP 4.2.8 -/
 lemma epackingNum_two_mul_le_ecoveringNum : epackingNum (2 * ε) s ≤ ecoveringNum ε s := by

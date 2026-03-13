@@ -11,11 +11,7 @@ open MeasureTheory
 
 namespace ProbabilityTheory
 variable {Ω : Type*} {m : MeasurableSpace Ω} {X Y : Ω → ℝ} {μ : Measure Ω} {s : Set Ω}
-
-@[simp] lemma evariance_zero_measure : eVar[X ; (0 : Measure[m] Ω)] = 0 := by simp [evariance]
-@[simp] lemma variance_zero_measure : Var[X ; (0 : Measure[m] Ω)] = 0 := by simp [variance]
-
-variable [IsZeroOrProbabilityMeasure μ]
+  [IsZeroOrProbabilityMeasure μ]
 
 /-- **Variance of a Bernoulli random variable**.
 
