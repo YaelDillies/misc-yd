@@ -186,6 +186,7 @@ lemma ecoveringNum_le_epackingNum : ecoveringNum ε s ≤ epackingNum ε s := by
     rintro M hNM ⟨hMs, hM⟩
     exact (hM.encard_le_epackingNum hMs).not_gt <| h ▸ hs.encard_lt_encard hNM
 
+set_option backward.isDefEq.respectTransparency false in
 /-- HDP 4.2.8 -/
 lemma epackingNum_two_mul_le_ecoveringNum : epackingNum (2 * ε) s ≤ ecoveringNum ε s := by
   simp only [le_ecoveringNum_iff_forall_le_card, epackingNum_le_iff_forall_card_le, ENNReal.coe_mul,

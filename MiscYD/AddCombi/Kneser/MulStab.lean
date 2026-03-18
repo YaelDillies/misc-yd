@@ -263,7 +263,7 @@ lemma card_mulStab_le_card : #s.mulStab ≤ #s := by
   · exact Nat.le_of_dvd hs.card_pos s.card_mulStab_dvd_card
 
 /-- A fintype instance for the stabilizer of a nonempty finset `s` in terms of `s.mulStab`. -/
-@[to_additive
+@[to_additive (attr := implicit_reducible)
 /-- A fintype instance for the stabilizer of a nonempty finset `s` in terms of `s.addStab`. -/]
 private def fintypeStabilizerOfMulStab (hs : s.Nonempty) : Fintype (stabilizer α s) where
   elems := s.mulStab.attach.map

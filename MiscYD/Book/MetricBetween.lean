@@ -13,6 +13,7 @@ Axiomatic betweenness
 
 variable {V : Type*} [MetricSpace V] {u v w : V}
 
+@[implicit_reducible]
 def MetricSBtw : SBtw V where
   sbtw u v w := u ≠ v ∧ u ≠ w ∧ v ≠ w ∧ dist u v + dist v w = dist u w
 

@@ -13,10 +13,7 @@ import MiscYD.Mathlib.Combinatorics.SetFamily.Shatter
 import MiscYD.Mathlib.GroupTheory.OrderOfElement
 import MiscYD.Mathlib.LinearAlgebra.AffineSpace.Combination
 import MiscYD.Mathlib.LinearAlgebra.AffineSpace.FiniteDimensional
-import MiscYD.Mathlib.MeasureTheory.Integral.Bochner.Set
 import MiscYD.Mathlib.MeasureTheory.MeasurableSpace.Basic
-import MiscYD.Mathlib.Probability.CondVar
-import MiscYD.Mathlib.Probability.Moments.Variance
 import MiscYD.PhD.VCDim.AddVCDim
 import MiscYD.PhD.VCDim.Convex
 import MiscYD.PhD.VCDim.CoveringPacking
