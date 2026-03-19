@@ -8,10 +8,6 @@ As such, it is crucial to continuously upstream code from MiscYD to Mathlib. The
 
 The following files are `sorry`-free and do not depend on any other MiscYD, meaning they can be readily PRed to Mathlib.
 
-{% include ready_to_upstream.md %}
+{% include _upstreaming_dashboard/ready_to_upstream_snippet.md %}
 
-## Files easy to unlock
-
-The following files do not depend on any other MiscYD file but still contain `sorry`, usually indicating that working on eliminating those sorries might unblock some part of the project.
-
-{% include easy_to_unlock.md %}
+{% include _upstreaming_dashboard/easy_to_unlock_snippet.md %}
