@@ -613,7 +613,7 @@ theorem sylvester_chvatal (V : Type*) [MetricSpace V] [Nontrivial V] [Finite V] 
   by_cases h : ∀ x y z : V, ¬ NotCollinear x y z
   · obtain ⟨L, hL, a, b, hab, rfl⟩ := thm_two' h
     exact ⟨a, b, hab, Or.inr hL⟩
-  push_neg at h
+  push Not at h
   replace h := one_implies_two h
   obtain ⟨a, b, h, hl⟩ := two_implies_three h
   exact ⟨a, b, h, Or.inl hl⟩

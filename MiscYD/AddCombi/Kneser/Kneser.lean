@@ -79,7 +79,7 @@ lemma mulStab_mul_ssubset_mulStab (hs₁ : (s ∩ a • C.mulStab).Nonempty)
   obtain ⟨w, hw, hwz⟩ := mem_smul_finset.mp hz
   refine (Finset.ssubset_iff_of_subset hsubset).mpr ⟨w, hw, ?_⟩
   rw [mem_mulStab' ⟨x * y, hxy⟩]
-  push_neg
+  push Not
   refine ⟨a * c * (b * d), by convert hxy, ?_⟩
   rw [smul_eq_mul, mul_comm w, ← smul_eq_mul (b := w), hwz]
   exact notMem_mono (mul_subset_mul inter_subset_left inter_subset_left) hzst
