@@ -44,10 +44,9 @@ lemma le_card_union_add_card_mulStab_union :
     min (#s + #s.mulStab) (#t + #t.mulStab) ≤ #(s ∪ t) + #(s ∪ t).mulStab := by
   classical
   obtain rfl | hs := s.eq_empty_or_nonempty
-  · simp [-zero_le']
-  -- TODO: `to_additive` chokes on `zero_le'`
+  · simp
   obtain rfl | ht := t.eq_empty_or_nonempty
-  · simp [-zero_le']
+  · simp
   set Hs := s.mulStab with hHs
   set Ht := t.mulStab with hHt
   set H := Hs * Ht with hH

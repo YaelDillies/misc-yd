@@ -290,9 +290,9 @@ lemma List.Sublist.pathLength_sublist {l₁ l₂ : List V} :
     l₁.Sublist l₂ → l₁.pathLength ≤ l₂.pathLength
   | slnil => pathLength_nonneg _
   | cons x h => (pathLength_sublist h).trans (pathLength_cons_le x)
-  | cons₂ _ slnil => le_rfl
-  | cons₂ x (cons₂ y h) => add_le_add_right (cons₂ y h).pathLength_sublist _
-  | cons₂ x (cons y h) => (cons₂ x h).pathLength_sublist.trans pathLength_triangle_left
+  | cons_cons _ slnil => le_rfl
+  | cons_cons x (cons_cons y h) => add_le_add_right (cons_cons y h).pathLength_sublist _
+  | cons_cons x (cons y h) => (cons_cons x h).pathLength_sublist.trans pathLength_triangle_left
 
 def List.Special (a b d : V) : List V → Prop
   | [] | [_] | [_, _] => False
