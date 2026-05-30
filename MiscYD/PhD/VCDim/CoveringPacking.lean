@@ -125,7 +125,9 @@ ball itself) should be compact since it admits a finite net (its center). -/
 lemma ecoveringNum_eq_top_of_not_isCompact_closure (hs : ¬ IsCompact (closure s)) :
     ecoveringNum ε s = ⊤ := by
   obtain rfl | hε := eq_or_ne ε 0
-  · simpa using fun hs' ↦ hs <| by simp [hs']
+  · simp only [ecoveringNum_zero, Set.encard_eq_top_iff]
+    rintro hs'
+    exact hs <| by simp [hs']
   · exact (ecoveringNum_eq_top hε).2 hs
 
 end MetricSpace
@@ -172,7 +174,7 @@ lemma exists_isSeparated_encard_eq_packingNum (hs : epackingNum ε s ≠ ⊤) :
   have : Nonempty ((N : Set X) ×' (_ : N ⊆ s) ×' IsSeparated ε N) := ⟨⟨∅, by simp, by simp⟩⟩
   simp only [epackingNum, iSup_psigma', ne_eq] at hs
   obtain ⟨⟨N, hNs, hN⟩, h⟩ := ENat.exists_eq_iSup_of_lt_top <| lt_top_iff_ne_top.2 hs
-  exact ⟨N, hNs, hN, by simpa [iSup_psigma] using h⟩
+  exact ⟨N, hNs, hN, by simpa [iSup_psigma, epackingNum] using h⟩
 
 /-- HDP 4.2.8 -/
 lemma ecoveringNum_le_epackingNum : ecoveringNum ε s ≤ epackingNum ε s := by
