@@ -1,26 +1,27 @@
-import MiscYD.AddCombi.Corner.CombiDegen
-import MiscYD.AddCombi.Impact
-import MiscYD.AddCombi.Kneser.CauchyDavenportFromKneser
-import MiscYD.AddCombi.Kneser.Kneser
-import MiscYD.AddCombi.Kneser.KneserRuzsa
-import MiscYD.AddCombi.Kneser.MulStab
-import MiscYD.AddCombi.SliceRank
-import MiscYD.Book.MetricBetween
-import MiscYD.Book.SylvesterChvatal
-import MiscYD.Convexity.MinkowskiCaratheodory
-import MiscYD.Mathlib.Analysis.Convex.Combination
-import MiscYD.Mathlib.Combinatorics.SetFamily.Shatter
-import MiscYD.Mathlib.GroupTheory.OrderOfElement
-import MiscYD.Mathlib.LinearAlgebra.AffineSpace.Combination
-import MiscYD.Mathlib.LinearAlgebra.AffineSpace.FiniteDimensional
-import MiscYD.Mathlib.MeasureTheory.MeasurableSpace.Basic
-import MiscYD.PhD.VCDim.AddVCDim
-import MiscYD.PhD.VCDim.Convex
-import MiscYD.PhD.VCDim.CoveringPacking
-import MiscYD.PhD.VCDim.HausslerPacking
-import MiscYD.PhD.VCDim.HypercubeEdges
-import MiscYD.PhD.VCDim.SmallAvDegImpExistsSmallOutDeg
-import MiscYD.PhD.VCDim.SmallVCImpSmallCondVar
-import MiscYD.PhD.VCDim.UnifAP.Defs
-import MiscYD.PhD.VCDim.UnifAP.Fourier
-import MiscYD.SetFamily.PosDiffs
+module  -- shake: keep-all --deprecated_module: ignore
+
+public import MiscYD.AddCombi.Corner.CombiDegen
+public import MiscYD.AddCombi.Impact
+public import MiscYD.AddCombi.Kneser.CauchyDavenportFromKneser
+public import MiscYD.AddCombi.Kneser.Kneser
+public import MiscYD.AddCombi.Kneser.KneserRuzsa
+public import MiscYD.AddCombi.Kneser.MulStab
+public import MiscYD.AddCombi.SliceRank
+public import MiscYD.Book.MetricBetween
+public import MiscYD.Book.SylvesterChvatal
+public import MiscYD.Convexity.MinkowskiCaratheodory
+public import MiscYD.Mathlib.Analysis.Convex.Combination
+public import MiscYD.Mathlib.Combinatorics.SetFamily.Shatter
+public import MiscYD.Mathlib.GroupTheory.OrderOfElement
+public import MiscYD.Mathlib.LinearAlgebra.AffineSpace.Combination
+public import MiscYD.Mathlib.LinearAlgebra.AffineSpace.FiniteDimensional
+public import MiscYD.Mathlib.MeasureTheory.MeasurableSpace.Basic
+public import MiscYD.PhD.VCDim.AddVCDim
+public import MiscYD.PhD.VCDim.Convex
+public import MiscYD.PhD.VCDim.HausslerPacking
+public import MiscYD.PhD.VCDim.HypercubeEdges
+public import MiscYD.PhD.VCDim.SmallAvDegImpExistsSmallOutDeg
+public import MiscYD.PhD.VCDim.SmallVCImpSmallCondVar
+public import MiscYD.PhD.VCDim.UnifAP.Defs
+public import MiscYD.PhD.VCDim.UnifAP.Fourier
+public import MiscYD.SetFamily.PosDiffs
