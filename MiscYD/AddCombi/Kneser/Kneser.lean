@@ -80,7 +80,7 @@ lemma mulStab_mul_ssubset_mulStab (hs₁ : (s ∩ a • C.mulStab).Nonempty)
   refine (Finset.ssubset_iff_of_subset hsubset).mpr ⟨w, hw, ?_⟩
   rw [mem_mulStab' ⟨x * y, hxy⟩]
   push Not
-  refine ⟨a * c * (b * d), by convert hxy, ?_⟩
+  refine ⟨a * c * (b * d), by simp_all, ?_⟩
   rw [smul_eq_mul, mul_comm w, ← smul_eq_mul (b := w), hwz]
   exact notMem_mono (mul_subset_mul inter_subset_left inter_subset_left) hzst
 
@@ -312,7 +312,7 @@ theorem mul_kneser :
     -- this will conclude the proof of the first case immediately
       rw [mul_tsub, mul_one, mul_add, tsub_le_iff_left, card_mulStab_mul_card_image_coe',
         card_mulStab_mul_card_image_coe'] at hineq
-      convert hineq using 1
+      convert! hineq using 1
       exact add_comm _ _
     refine le_of_le_of_eq (mul_le_mul_right ?_ _) (card_mul_card_eq_mulStab_card_mul_coe s t).symm
     have := ih _ ?_ (s.image (↑) : Finset (α ⧸ stabilizer α (↑(s * t) : Set α))) (t.image (↑)) rfl
