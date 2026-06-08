@@ -1,6 +1,6 @@
 module
 
-public import Mathlib.Combinatorics.SimpleGraph.Coloring.VertexColoring
+public import Mathlib.Combinatorics.SimpleGraph.Coloring.Vertex
 public import Mathlib.Data.Set.Card
 
 public section
