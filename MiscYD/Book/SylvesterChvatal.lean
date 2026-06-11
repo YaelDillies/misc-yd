@@ -154,7 +154,7 @@ section IsSimpleTriangle
 @[simps]
 def simpleEdges : SimpleGraph V where
   Adj a b := a ≠ b ∧ ∀ x, ¬ sbtw a x b
-  symm a b := fun | ⟨hab, h⟩ => ⟨hab.symm, fun x hx => h x hx.symm⟩
+  symm.symm | a, b, ⟨hab, h⟩ => ⟨hab.symm, fun x hx ↦ h x hx.symm⟩
 
 def IsSimpleTriangle (x y z : V) : Prop :=
   simpleEdges.Adj x y ∧ simpleEdges.Adj y z ∧ simpleEdges.Adj z x ∧ NotCollinear x y z
