@@ -241,7 +241,7 @@ lemma pairwiseDisjoint_smul_finset_mulStab (s : Finset α) :
 @[to_additive]
 lemma disjoint_smul_finset_mulStab_mul_mulStab :
     ¬a • s.mulStab ⊆ t * s.mulStab → Disjoint (a • s.mulStab) (t * s.mulStab) := by
-  simp_rw [@not_imp_comm (_ ⊆ _), ← smul_eq_mul, ← biUnion_smul_finset, disjoint_biUnion_right,
+  simp_rw [@not_imp_comm (_ ≤ _), ← smul_eq_mul, ← biUnion_smul_finset, disjoint_biUnion_right,
     Classical.not_forall]
   rintro ⟨b, hb, h⟩
   rw [s.pairwiseDisjoint_smul_finset_mulStab.eq (Set.mem_range_self _) (Set.mem_range_self _) h]
