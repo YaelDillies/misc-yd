@@ -44,8 +44,7 @@ lemma hasSliceRankLE_iff_exists_sum :
   · rintro ⟨f', iₙ, gₙ, hₙ, ⟨i, g, h, rfl⟩, rfl⟩
     refine ⟨Fin.cons iₙ i, Fin.cons gₙ g, Fin.cons hₙ h, ?_⟩
     ext x
-    simp only [ne_eq, Pi.add_apply, Finset.sum_apply, add_comm (_ * _), Fin.sum_univ_succ,
-      Fin.cons_zero, Fin.cons_succ]
+    simp only [ne_eq, Pi.add_apply, Finset.sum_apply, add_comm (_ * _), Fin.sum_univ_succ]
     congr
   · rintro ⟨i, g, h, rfl⟩
     refine ⟨_, i 0, g 0, h 0, ⟨Fin.tail i, Fin.tail g, Fin.tail h, rfl⟩, ?_⟩

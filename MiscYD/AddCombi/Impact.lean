@@ -39,7 +39,7 @@ variable [Group α] {n : ℕ}
 @[to_additive (attr := simp)]
 lemma mulImpact_singleton [Infinite α] (a : α) (n : ℕ) : ({a} : Finset α).mulImpact n = n := by
   simp only [mulImpact, singleton_mul, card_smul_finset]
-  haveI : Nonempty {t : Finset α // #t = n} := nonempty_subtype.2 (exists_card_eq _)
+  have : Nonempty {t : Finset α // #t = n} := nonempty_subtype.2 (exists_card_eq _)
   exact Eq.trans (iInf_congr Subtype.prop) ciInf_const
 
 variable [Fintype α]
@@ -58,9 +58,9 @@ variable [CommGroup α] [CommGroup β] {n : ℕ}
 @[to_additive]
 lemma mulImpact_map_of_infinite [Infinite α] (s : Finset α) (f : α →* β) (hf : Injective f) :
     mulImpact (s.map ⟨f, hf⟩) n = mulImpact s n := by
-  haveI : Infinite β := sorry
-  haveI : Nonempty {t : Finset α // #t = n} := nonempty_subtype.2 (exists_card_eq _)
-  haveI : Nonempty {t : Finset β // #t = n} := nonempty_subtype.2 (exists_card_eq _)
+  have : Infinite β := sorry
+  have : Nonempty {t : Finset α // #t = n} := nonempty_subtype.2 (exists_card_eq _)
+  have : Nonempty {t : Finset β // #t = n} := nonempty_subtype.2 (exists_card_eq _)
   refine le_antisymm ?_ ?_
   · refine le_ciInf fun t => ?_
     sorry

@@ -451,7 +451,7 @@ theorem mul_kneser :
     rw [hstab]
     refine (hC.mulStab_nontrivial.mp hCstab).symm.ssubset_of_subset ?_
     simp only [one_subset, one_mem_mulStab, hC]
-  simp only [Set.mem_setOf_eq, Subset.rfl, true_and, not_le, hstab, mul_one, card_one,
+  simp only [Set.mem_ofPred_eq, Subset.rfl, true_and, not_le, hstab, mul_one, card_one,
     convergent] at hstconv
   zify at hstconv
   have hSTcard : (#S : ℤ) + #T + #(s ∪ t) ≤ #((s ∪ t) * H) := by

@@ -30,7 +30,7 @@ open scoped Pointwise
 /-- The **Cauchy-Davenport Theorem**. -/
 lemma ZMod.cauchy_davenport' {p : ℕ} (hp : p.Prime) {s t : Finset (ZMod p)} (hs : s.Nonempty)
     (ht : t.Nonempty) : min p (#s + #t - 1) ≤ #(s + t) := by
-  haveI : Fact p.Prime := ⟨hp⟩
+  have : Fact p.Prime := ⟨hp⟩
   obtain h | h := eq_bot_or_eq_top (AddAction.stabilizer (ZMod p) (s + t))
   · refine min_le_of_right_le ?_
     rw [← coe_set_eq_zero, ← stabilizer_coe_finset, ← coe_addStab (hs.add ht), coe_eq_zero] at h

@@ -127,7 +127,7 @@ variable [Finite V]
 
 theorem thm_two (h : ∀ x y z : V, ¬ NotCollinear x y z) :
     (Set.univ : Set V).IsLine := by
-  let S : Set (Set V) := setOf Set.IsLine
+  let S : Set (Set V) := Set.ofPred Set.IsLine
   have : S.Nonempty := let ⟨x, y, hxy⟩ := exists_pair_ne V; ⟨_, Line_isLine hxy⟩
   obtain ⟨L, hL, hL'⟩ := S.toFinite.exists_maximal this
   simp_rw [← le_imp_eq_iff_le_imp_ge'] at hL'
@@ -166,7 +166,7 @@ variable [Finite V]
 
 lemma one_implies_two (h : ∃ x y z : V, NotCollinear x y z) :
     ∃ x y z : V, IsSimpleTriangle x y z := by
-  let S : Set (V × V × V) := setOf (fun ⟨a, b, c⟩ => NotCollinear a b c)
+  let S : Set (V × V × V) := Set.ofPred (fun ⟨a, b, c⟩ => NotCollinear a b c)
   have : S.Nonempty := let ⟨x, y, z, hxyz⟩ := h; ⟨(x, y, z), hxyz⟩
   let f : V × V × V → ℝ := fun ⟨a, b, c⟩ => dist a b + dist b c + dist c a
   obtain ⟨⟨a, b, c⟩, (h₁ : NotCollinear _ _ _), h₂⟩ := S.toFinite.exists_minimalFor f S this
@@ -367,7 +367,7 @@ lemma exists_simple_split_right {a b : V} (hab : a ≠ b) (hab' : ¬ simpleEdges
     ∃ c, sbtw a c b ∧ simpleEdges.Adj c b := by
   simp only [simpleEdges_adj, hab, not_false_eq_true, true_and, ne_eq, not_forall, not_not] at hab'
   obtain ⟨c', hc'⟩ := hab'
-  let S : Set V := setOf (sbtw a · b)
+  let S : Set V := Set.ofPred (sbtw a · b)
   obtain ⟨c, hc : sbtw _ c _, hcmin⟩ := S.toFinite.exists_minimalFor (dist b) _ ⟨c', hc'⟩
   refine ⟨c, hc, hc.ne23, fun c' hc' => ?_⟩
   have : dist b c ≤ dist b c' := le_of_not_gt fun h => h.not_ge <| hcmin (hc.trans_right' hc') h.le
@@ -547,7 +547,7 @@ lemma case3 {a b c d a₁ a₂ a₃ : V} {l : List V} (habc : IsSimpleTriangle a
 
 lemma two_implies_three (h : ∃ x y z : V, IsSimpleTriangle x y z) :
     ∃ a b : V, a ≠ b ∧ Line a b = {a, b} := by
-  let S : Set (V × V × V) := setOf (fun ⟨x, y, z⟩ => IsSimpleTriangle x y z)
+  let S : Set (V × V × V) := Set.ofPred (fun ⟨x, y, z⟩ => IsSimpleTriangle x y z)
   have : S.Nonempty := let ⟨x, y, z, hxyz⟩ := h; ⟨(x, y, z), hxyz⟩
   obtain ⟨⟨a, b, c⟩, (habc : IsSimpleTriangle a b c), hmin⟩ :=
     S.toFinite.exists_minimalFor (fun ⟨x, y, z⟩ => Delta x y z) S this
@@ -568,7 +568,7 @@ lemma two_implies_three (h : ∃ x y z : V, IsSimpleTriangle x y z) :
     rw [Delta_comm]
     exact hmin _ _ _ h'
   clear hd'
-  let S : Set V := setOf (sbtw a c)
+  let S : Set V := Set.ofPred (sbtw a c)
   obtain ⟨d, hd : sbtw _ _ d, hdmin⟩ := S.toFinite.exists_minimalFor (dist c) S ⟨d, acd⟩
   have hbd' : b ≠ d := by
     rintro rfl
@@ -586,7 +586,7 @@ lemma two_implies_three (h : ∃ x y z : V, IsSimpleTriangle x y z) :
     simp only [dist_eq_zero] at this
     exact he.ne23 this
   have hbd := eqn_7 habc hmin hd hcd
-  let S : Set (List V) := setOf (List.Special a b d)
+  let S : Set (List V) := Set.ofPred (List.Special a b d)
   have : S.Finite := by
     have ⟨n, hn⟩ := uniformly_bounded_of_chain_ne_of_pathLength_le V [a, b, d].pathLength
     exact (List.finite_length_le _ _).subset fun l hl => hn l hl.chain_ne hl.pathLength_le
