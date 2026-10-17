@@ -9,7 +9,7 @@ public import MiscYD.Book.MetricBetween
 variable {V : Type*} [MetricSpace V]
 
 section
-variable {u v w : V}
+variable {s : Set V} {u v w x y z : V}
 
 open scoped MetricBetweenness
 
@@ -17,25 +17,23 @@ open scoped MetricBetweenness
 inductive Set.collinearTriple : Set V → Prop
 | mk {u v w : V} (h : sbtw u v w) : collinearTriple {u, v, w}
 
--- lemma Finset.collinearTriple_iff {}
-inductive GenerateLine (s : Set V) : Set V
-| basic {x : V} : x ∈ s → GenerateLine s x
-| extend_out (u v w : V) : GenerateLine s u → GenerateLine s v → sbtw u v w → GenerateLine s w
-| extend_in (u v w : V) : GenerateLine s u → GenerateLine s v → sbtw u w v → GenerateLine s w
+inductive IsGenerated (s : Set V) : V → Prop
+| basic {x : V} : x ∈ s → IsGenerated s x
+| extend_out (u v w : V) : IsGenerated s u → IsGenerated s v → sbtw u v w → IsGenerated s w
+| extend_in (u v w : V) : IsGenerated s u → IsGenerated s v → sbtw u w v → IsGenerated s w
 
-lemma subset_generateLine (s : Set V) : s ⊆ GenerateLine s := fun _ => GenerateLine.basic
+def GenerateLine (s : Set V) : Set V := Set.ofPred (IsGenerated s)
 
-lemma generateLine_close_right {s : Set V} {x y z : V}
-  (hx : x ∈ GenerateLine s) (hy : y ∈ GenerateLine s)
-  (h : sbtw x y z) : z ∈ GenerateLine s := GenerateLine.extend_out x y _ hx hy h
+lemma subset_generateLine (s : Set V) : s ⊆ GenerateLine s := fun _ => .basic
 
-lemma generateLine_close_left {s : Set V} {x y z : V}
-  (hx : x ∈ GenerateLine s) (hy : y ∈ GenerateLine s)
-  (h : sbtw z x y) : z ∈ GenerateLine s := GenerateLine.extend_out y x _ hy hx h.symm
+lemma generateLine_close_right (hx : x ∈ GenerateLine s) (hy : y ∈ GenerateLine s)
+    (h : sbtw x y z) : z ∈ GenerateLine s := .extend_out x y _ hx hy h
 
-lemma generateLine_close_middle {s : Set V} {x y z : V}
-  (hx : x ∈ GenerateLine s) (hy : y ∈ GenerateLine s)
-  (h : sbtw x z y) : z ∈ GenerateLine s := GenerateLine.extend_in _ _ _ hx hy h
+lemma generateLine_close_left (hx : x ∈ GenerateLine s) (hy : y ∈ GenerateLine s) (h : sbtw z x y) :
+    z ∈ GenerateLine s := .extend_out y x _ hy hx h.symm
+
+lemma generateLine_close_middle (hx : x ∈ GenerateLine s) (hy : y ∈ GenerateLine s)
+    (h : sbtw x z y) : z ∈ GenerateLine s := .extend_in _ _ _ hx hy h
 
 lemma generateLine_minimal {S L : Set V} (hL₀ : S ⊆ L)
     (out_closed : ∀ {x y z}, x ∈ L → y ∈ L → sbtw x y z → z ∈ L)
@@ -133,13 +131,13 @@ theorem thm_two (h : ∀ x y z : V, ¬ NotCollinear x y z) :
   simp_rw [← le_imp_eq_iff_le_imp_ge'] at hL'
   suffices L = Set.univ by rwa [← this]
   refine Set.eq_univ_of_forall fun c ↦ ?_
-  by_contra! hc
+  by_contra hc
   obtain ⟨a, b, hab, rfl⟩ := hL
-  have hac : a ≠ c := fun h => hc (subset_generateLine _ (by simp [h]))
-  have hbc : b ≠ c := fun h => hc (subset_generateLine _ (by simp [h]))
+  have hac : a ≠ c := by rintro rfl; exact hc left_mem_Line
+  have hbc : b ≠ c := by rintro rfl; exact hc right_mem_Line
   simp only [NotCollinear, not_and, not_forall, not_not] at h
   obtain ⟨M, hM, habc⟩ := h a b c hab hac hbc
-  have := hL' hM (Set.IsLine.generateLine_subset (habc.trans' (by simp)) hM)
+  have := hL' hM <| hM.generateLine_subset <| habc.trans' <| by simp
   rw [← this] at hc
   exact hc (habc (by simp))
 

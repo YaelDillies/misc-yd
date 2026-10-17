@@ -130,7 +130,7 @@ lemma mulStab_union (hs₁ : (s ∩ a • C.mulStab).Nonempty) (ht₁ : (t ∩ b
   apply ssubset_of_subset_not_subset
   · refine (mul_subset_mul inter_subset_right inter_subset_right).trans ?_
     simp only [smul_mul_smul_comm, mulStab_mul_mulStab, subset_refl]
-  · contrapose! hab
+  · contrapose hab
     exact hab.trans (mul_subset_mul inter_subset_left inter_subset_left)
 
 @[to_additive]
@@ -162,7 +162,7 @@ lemma disjoint_smul_mulStab (hst : s ⊆ t) (has : ¬a • s.mulStab ⊆ t) :
     simpa [mul_comm, disjoint_comm, mulStab_mul]
   apply disjoint_smul_finset_mulStab_mul_mulStab
   rw [mul_comm, mulStab_mul]
-  contrapose! has
+  contrapose has
   exact subset_trans has hst
 
 @[to_additive]
@@ -199,7 +199,7 @@ lemma disjoint_mul_sub_card_le {a : α} (b : α) {s t C : Finset α} (has : a �
       refine fun x hx => mem_sdiff.mpr ⟨?_, ?_⟩
       · apply smul_finset_subset_smul (mem_union_left t has) (mem_sdiff.mp hx).1
       have hx' := (mem_sdiff.mp hx).2
-      contrapose! hx'
+      contrapose hx'
       obtain ⟨y, hyst, d, hd, hxyd⟩ := mem_mul.mp hx'
       obtain ⟨c, hc, hcx⟩ := mem_smul_finset.mp (mem_sdiff.mp hx).1
       rw [← hcx, ← eq_mul_inv_iff_mul_eq] at hxyd
@@ -209,7 +209,7 @@ lemma disjoint_mul_sub_card_le {a : α} (b : α) {s t C : Finset α} (has : a �
         exact Eq.symm ((mem_mulStab hC).mp (hst hd))
       replace hyst : y ∈ s := by
         apply or_iff_not_imp_right.mp (mem_union.mp hyst)
-        contrapose! hsC
+        contrapose hsC
         exact not_disjoint_iff.mpr ⟨y, hsC, hyC⟩
       rw [eq_mul_inv_iff_mul_eq, hcx] at hxyd
       rw [← hxyd]
@@ -249,7 +249,7 @@ lemma inter_mul_sub_card_le {a : α} {s t C : Finset α} (has : a ∈ s)
       refine fun x hx => mem_sdiff.mpr ⟨?_, ?_⟩
       · apply smul_finset_subset_smul (mem_union_left t has) (mem_sdiff.mp hx).1
       have hx' := (mem_sdiff.mp hx).2
-      contrapose! hx'
+      contrapose hx'
       rw [← union_inter_distrib_right]
       obtain ⟨y, hyst, d, hd, hxyd⟩ := mem_mul.mp hx'
       obtain ⟨c, hc, hcx⟩ := mem_smul_finset.mp (mem_sdiff.mp hx).1
